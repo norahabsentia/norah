@@ -19,7 +19,9 @@ regBtn.addEventListener('click', function(e) {
     var auth = firebase.auth();
 
     var promise = auth.createUserWithEmailAndPassword(email, pass);
-
+    promise.then(function val() {
+        auth.sendEmailVerification();
+    });
     promise.catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -33,6 +35,7 @@ regBtn.addEventListener('click', function(e) {
 
 firebase.auth().onAuthStateChanged(function(firebaseUser) {
     if (firebaseUser) {
+
         // location.reload(true);
         closeLoginModal();
     } else {

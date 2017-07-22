@@ -4,20 +4,19 @@ $('.sign-in').click(function() {
 
 firebase.auth().onAuthStateChanged(function(user) {
     // DISPLAY USER MAIL INFO
-    if (user) {
-        $('.user-mail').html(user.email);
-    } else {
-        if (window.location.search.replace('?', '') == 'reg') {
-            $('.follow_icon button').click();
-        }
-    }
 
-    if (user) {
+    if (user && user.emailVerified) {
+        $('.user-mail').html(user.email);
         $('.sign-in').css('display', 'none');
         $('.log-Out').css('display', 'block');
 
     } else {
+        alert("Please verify you email address");
+        user.sendEmailVerification();
         $('.regB').css('display', 'block');
+        if (window.location.search.replace('?', '') == 'reg') {
+            $('.follow_icon button').click();
+        }
     }
 
     $('.fa-plus-circle, .fa-download').off('click').on('click', function() {
@@ -27,29 +26,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     });
 
-
     // console.log(user.email);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
       if (user && user.uid != currentUid) {  
         // Обноваляем UI когда новый пользователь логинится
