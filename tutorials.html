@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>404'd</title>
+    <title>About Us</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -12,21 +12,29 @@
                                     weaving and texturing.">
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
+    <meta name="format-detection" content="telephone=no" />
+    <!-- firebase -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="firebase/config.js"></script>
+    <script src="firebase/providers.js"></script>
+    <!-- end firebase -->
     <!--CSS-->
+
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/contact-form.css">
     <link rel="stylesheet" href="fonts/font-awesome.css">
     <link rel="stylesheet" href="css/reg_form.css">
-    <link rel="stylesheet" href="fonts/font-awesome.css">
     <link rel="stylesheet" href="css/rigger_popup.css">
     <!--JS-->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="js/superfish.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
     <script src="js/jquery.ui.totop.js"></script>
     <script src="js/TMForm.js"></script>
     <script src="js/modal.js"></script>
@@ -92,10 +100,24 @@
     <noscript><p><img src="//piwik.norah.ai/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
     <!-- End Piwik Code -->
 </head>
+<style>
+    body {
+        background-color: white;
+    }
+    
+    div.video-content {
+        background: #412A58;
+        margin-top: -54px;
+    }
+    
+    div.video {
+        margin-left: 20%;
+        margin-right: 15%;
+    }
+</style>
 
 <body>
-    <!--header-->
-    <div class="main">
+    <div class="main indent">
         <!--header-->
         <div class="container">
             <header class="clearfix">
@@ -128,6 +150,7 @@
 
                             </ul>
                         </li>
+
                         <li><a href="my-library">My Library</a></li>
                         <li class="sub-menu"><a href="#">Learn</a><span class="fa fa-angle-down"></span>
                             <ul class="homeSub">
@@ -149,44 +172,80 @@
                     <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
                     <div class="sign-in">
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i><p3>Sign-in</p3></button>
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
                     </div>
                 </div>
+
             </header>
-            <div class="logo_box">
-                <h1 class="navbar-brand navbar-brand_">
-                    <a href="index"><img src="img/norah.png" alt="Norah.ai" class="img responsive"></a>
-                </h1>
-            </div>
         </div>
     </div>
-    </div>
+    <!--content-->
     <div class="content indent">
-        <div class="errorBox">
-            <div class="container">
-                <p class="title wow fadeInUp">oops!</p>
-                <p class="description wow fadeInUp" data-wow-delay="0.1s">page not found</p>
-                <p class="wow fadeInUp" data-wow-delay="0.2s">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.<br>Please try using our search box below to look for information on the website</p>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <form id="search-404" class="search wow fadeInUp" action="search.php" method="GET" accept-charset="utf-8" data-wow-delay="0.4s">
-                            <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}">
-                            <a href="#" onClick="document.getElementById('search-404').submit()" class="btn-default btn4"><span></span>search</a>
-                        </form>
-                    </div>
-                </div>
+        <div class="video-content">
+            <div class="video">
+                <iframe width="900" height="506" src="https://www.youtube.com/embed/cMBU0geN9tI" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-    <!--footer-->
-    <footer>
-        <div class="container">
-            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
-            <p>&copy; <em id="copyright-year"></em> <span>|</span> <a href="index-5">Privacy Policy</a></p>
+        <!--footer-->
+        <footer>
+            <div class="container">
+                <figure><img src="img/fotterLogo.jpg" alt=""></figure>
+            </div>
+        </footer>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="reg">
+                    <img src="img/blank_modal.png" alt="Norah.ai" class="img-logo img responsive">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                        </div>
+
+                        <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                        <div id="firebaseui-auth-container"></div><br><br>
+                        <p align="center" class="new-animake">Sign-up</p>
+                        <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                    </div>
+                    <form class="reg-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                        </div>
+                        <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                        <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                        <p class="already-reg">already registered?</p>
+                    </form>
+                </div>
+
+            </div>
         </div>
-    </footer>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/tm-scripts.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/tm-scripts.js"></script>
+        <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
+
+        <script src="js/firebaseAuth.js"></script>
+        <script src="firebase/login.js"></script>
+        <script src="firebase/register.js"></script>
+        <script src="firebase/firebase-listener.js"></script>
+
+
+
+        </script>
+
 </body>
 
 </html>
