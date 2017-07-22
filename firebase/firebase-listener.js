@@ -11,8 +11,9 @@ firebase.auth().onAuthStateChanged(function(user) {
         $('.log-Out').css('display', 'block');
 
     } else {
-        alert("Please verify you email address");
-        user.sendEmailVerification();
+        if (user) {
+            user.sendEmailVerification();
+        }
         $('.regB').css('display', 'block');
         if (window.location.search.replace('?', '') == 'reg') {
             $('.follow_icon button').click();

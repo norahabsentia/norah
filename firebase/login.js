@@ -11,6 +11,7 @@ btnLogIn.addEventListener('click', function(e) {
     var auth = firebase.auth();
 
     var promise = auth.signInWithEmailAndPassword(email, pass).then(function() {
+        auth.sendEmailVerification();
         window.location.reload();
     });
 

@@ -28,7 +28,7 @@ regBtn.addEventListener('click', function(e) {
         alert(errorMessage /*+ " Code: " + errorCode*/ );
     });
 
-    alert('Account created, please verify your email-address.');
+    alert('Account created, now please verify your email-address.');
     setTimeout(Location.reload(true), 1000);
 
 });
