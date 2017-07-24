@@ -5,7 +5,7 @@ $('.sign-in').click(function() {
 firebase.auth().onAuthStateChanged(function(user) {
     // DISPLAY USER MAIL INFO
 
-    if (user && user.emailVerified) {
+    if (user /*&& user.emailVerified*/ ) {
         $('.user-mail').html(user.email);
         $('.sign-in').css('display', 'none');
         $('.log-Out').css('display', 'block');
