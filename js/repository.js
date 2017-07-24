@@ -53,7 +53,7 @@ firebase.database().ref("animations").once("value", function(ss) {
         var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
 
         var animFileName = "animFiles/" + anim.name + ".anim";
-        var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;   
+        var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
         anim.mp4Url = mp4Url;
         anim.animUrl = animFileUrl;
 
@@ -96,13 +96,13 @@ function getVideos(page) {
     var blocks = '';
     var anim_final = matchTags();
 
-    anim_final=SearchModule.searchKeywords(anim_final);
-    
+    anim_final = SearchModule.searchKeywords(anim_final);
+
     console.log(SearchModule);
     showSearchCount(anim_final.length);
     //console.log(anim_final);
     //anim_final=SearchModule.searchKeywords(anim_final);
-    
+
     updatePagination(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
 
@@ -194,7 +194,7 @@ function updatePagination(items) {
     var prevLength = 0;
     if (!paginationInitialized) {
         paginationInitialized = true;
-         jQuery('.repo-pages').pagination({
+        jQuery('.repo-pages').pagination({
             items: items.length,
             itemsOnPage: resultsPerPage,
             onPageClick: function(pageNumber) {
@@ -209,68 +209,71 @@ function updatePagination(items) {
     }
 }
 
-    function showSearchCount(count){
-        console.log("Keyword "+SearchModule.isEmpty() +" count "+count);
-        if(!SearchModule.isEmpty())
-            {
-                $(".searchMessage div")[0].innerHTML="<strong>"+count+"</strong> results for \""+SearchModule.getKeyWord()+"\"";
+function showSearchCount(count) {
+    console.log("Keyword " + SearchModule.isEmpty() + " count " + count);
+    if (!SearchModule.isEmpty()) {
+        toastr.info(count + ' results for "' + SearchModule.getKeyWord() + '"')
+            /* 
+               $(".searchMessage div")[0].innerHTML="<strong>"+count+"</strong> results for \""+SearchModule.getKeyWord()+"\"";
                 $(".searchMessage")[0].style.display="block";
-            }
-        else{
-                $(".searchMessage")[0].style.display="none";
-        }
+            */
 
+    } else {
+        // $(".searchMessage")[0].style.display = "none";
     }
 
+}
 
- var SearchModule=function(){
-    var keyword=""
-        return {
-                search:function(Keyword){
-                getVideos(1);
-        },
-        KeywordChanged:function(text){
-                    keyword=text.toLowerCase();
-        },
-        isEmpty:function(){
 
-            if(keyword.length>0)
+var SearchModule = function() {
+    var keyword = ""
+    return {
+        search: function(Keyword) {
+            getVideos(1);
+        },
+        KeywordChanged: function(text) {
+            keyword = text.toLowerCase();
+        },
+        isEmpty: function() {
+
+            if (keyword.length > 0)
                 return false;
             else
                 return true;
-        },getKeyWord:function(){
+        },
+        getKeyWord: function() {
 
             return keyword;
-        },        
-        searchKeywords:function(anims){
-            if(keyword.length>0){   
-                var filteredAnims=[];
-             anims.filter((anim)=>{
-                    var k=keyword.split(" ");
-                    for(i=0;i<k.length;i++){
-                        var s=""
-                        if(anim.displayName.toLowerCase().indexOf(k[i])>=0)
-                          {     console.log("Key: "+k+" name "+anim.displayName);
-                                filteredAnims.push(anim);  
+        },
+        searchKeywords: function(anims) {
+            if (keyword.length > 0) {
+                var filteredAnims = [];
+                anims.filter((anim) => {
+                    var k = keyword.split(" ");
+                    for (i = 0; i < k.length; i++) {
+                        var s = ""
+                        if (anim.displayName.toLowerCase().indexOf(k[i]) >= 0) {
+                            console.log("Key: " + k + " name " + anim.displayName);
+                            filteredAnims.push(anim);
                             return anim;
-                          
+
                         }
                     }
 
                     return false;
 
-                } );
-            return filteredAnims;
-            }else{
-            return anims;
+                });
+                return filteredAnims;
+            } else {
+                return anims;
             }
-        }  
+        }
 
-            
-        } ;
-        
+
+    };
+
 }();
-    
+
 
 
 jQuery(document).ready(function() {
@@ -325,7 +328,7 @@ jQuery(document).ready(function() {
     });
     /*----------------------CloseButton---------------------*/
 
-   
+
 
 
 });
