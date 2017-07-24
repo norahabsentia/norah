@@ -318,24 +318,8 @@
                                             </div>
                                             <div class="col-md-2" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
                                                 <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.jpg') no-repeat -0px 5px;border:0px solid #fff"></span></a>
-
+                                              
                                             </div>
-
-
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-10" style="padding:0;margin:0;padding-left:17px;">
-                                                <input id="animation_name" type="text" autocomplete="off" value="Save to Firebase" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
-                                            </div>
-                                            <div class="col-md-2" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
-                                                <a href="javascript:saveAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/save_icon.png') no-repeat -0px 5px;border:0px solid #fff"></span></a>
-
-                                            </div>
-
-
-
                                         </div>
 
                                     </div>
@@ -554,7 +538,9 @@
             console.log(right_array);
             console.log(right_duration_array);
 
-            // Right
+
+
+         /*   // Right
             firebase.storage().ref("yamlFiles").child(right_array[0] + ".anim").getDownloadURL().then(function(animDownloadUrl) {
                 firebase.storage().ref("mp4Files").child(right_array[0] + ".mp4").getDownloadURL().then(function(downloadUrl) {
                     console.log(animDownloadUrl);
@@ -580,7 +566,7 @@
 
                     PlayLeftAnimation(downloadUrl, left_displaynames_array[0], left_duration_array[0]);
                 })
-            });
+            });*/
 
         }
         var childrenCount;
@@ -763,55 +749,42 @@
             var txt = document.getElementById("animation_name");
             var animName = txt.value;
             gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
+       
         }
 
-        function saveAnim() {
-
-            var user = firebase.auth().currentUser;
+        function saveAnim(){
+              
+            var user=firebase.auth().currentUser;
             // Collect the values from form.
             var objectToSave = {
-                user: {
-                    mail: user.email,
-                    uid: user.uid,
-                    name: user.displayName
-                },
-                animUrl: "Not available",
-                styletranfertool: {
-                    name: $("#animation_name").val(),
-                    blending_options: {
-                        loop: jQuery("input[name='Loop']").is(":checked"),
-                        timeStretch: jQuery("input[name='TimeStretch']").is(":checked"),
-                        startOffs: jQuery("input[name='StartOffs']").val()
+                user:{  mail:user.email,
+                        uid:user.uid,
+                        name:user.displayName 
                     },
-                    blending_tools: {
-                        head: jQuery("input[name='Head']").val(),
-                        trso: jQuery("input[name='Trso']").val(),
-                        armL: jQuery("input[name='ArmL']").val(),
-                        armR: jQuery("input[name='ArmR']").val(),
-                        legL: jQuery("input[name='LegL']").val(),
-                        legR: jQuery("input[name='LegR']").val(),
-                        fing: jQuery("input[name='Fing']").val(),
-                        root: jQuery("input[name='Root']").val()
-                    },
-                    leftAnimation: {
-                        name: left_displaynames_array[current_left],
-                        duration: left_duration_array[current_left],
-                        file: left_array[current_left]
-                    },
-                    rightAnimation: {
-
-                        name: right_displaynames_array[current_right],
-                        duration: right_duration_array[current_right],
-                        file: right_array[current_right]
-
-                    }
-                },
-                created: new Date().toLocaleDateString()
+                 animUrl:"Not available",   
+                styletranfertool:{    
+                                    name: $("#animation_name").val(),
+                                    blending_options: {
+                                        loop: jQuery("input[name='Loop']").is(":checked"),
+                                        timeStretch: jQuery("input[name='TimeStretch']").is(":checked"),
+                                        startOffs: jQuery("input[name='StartOffs']").val()
+                                },
+                                    blending_tools: {
+                                    head: jQuery("input[name='Head']").val(),
+                                    trso: jQuery("input[name='Trso']").val(),
+                                    armL: jQuery("input[name='ArmL']").val(),
+                                    armR: jQuery("input[name='ArmR']").val(),
+                                    legL: jQuery("input[name='LegL']").val(),
+                                    legR: jQuery("input[name='LegR']").val(),
+                                    fing: jQuery("input[name='Fing']").val(),
+                                    root: jQuery("input[name='Root']").val()
+                                    }   
+                }
             };
 
             // Get the current user id.
             var userId = firebase.auth().currentUser.uid;
-            console.log(objectToSave);
+             console.log(objectToSave);   
             // Get the reference to new object in firebase.
             var ref = firebase
                 .database()
@@ -819,17 +792,10 @@
                 .push();
 
             // Set the value for the newly created reference.
-            try {
-                ref.set(objectToSave);
-                alert("Anim: " + objectToSave.styletranfertool.name + " has been saved to firebase");
-
-            } catch (e) {
-                alert("Failed to save the anim..!" + e);
-            }
-
-
+            ref.set(objectToSave);
+      
+                
         }
-
 
         function handleClick(cb) {
             var name = cb.getAttribute('name');
@@ -895,6 +861,103 @@
 
         }
 
+         
+        
+        (function loadAnim(){
+
+            var Errors=[];
+            var href=window.location.href;
+             var id=href.split("#")[1];   
+            if(id){
+             console.log("Loading anim "+id);
+                 var user=firebase.auth().currentUser;
+           
+            // Get the current user id.
+            // Get the reference to new object in firebase.
+            var ref = firebase
+                .database()
+                .ref("contests/"+id);
+
+                console.log(ref);
+                
+                ref.once('value').then(function(data){
+                    console.log(data);
+                    console.log("data received");
+                    if(data.val()){
+                        console.log(data.val());
+                        var userInfo=data.val().user;
+                        var anim=data.val().styletranfertool;
+
+                        //set values
+
+                         $("#animation_name").val(anim.name);
+                        //blending_options
+                        jQuery("input[name='Loop']").prop("checked",anim.blending_options.loop),
+                        jQuery("input[name='TimeStretch']").prop("checked",anim.blending_options.timeStretch),
+                        jQuery("input[name='StartOffs']").val(anim.startOffs);
+                                
+                        // blending_tools
+                        jQuery("input[name='Head']").val(anim.blending_tools.head);
+                        jQuery("input[name='Trso']").val(anim.blending_tools.trso);
+                        jQuery("input[name='ArmL']").val(anim.blending_tools.armL);
+                        jQuery("input[name='ArmR']").val(anim.blending_tools.armR);
+                        jQuery("input[name='LegL']").val(anim.blending_tools.legL);
+                        jQuery("input[name='LegR']").val(anim.blending_tools.legR);
+                        jQuery("input[name='Fing']").val(anim.blending_tools.fing);
+                        jQuery("input[name='Root']").val(anim.blending_tools.root);
+
+                        if(anim.rightAnimation){
+                //   alert("loading right animation "+anim.rightAnimation.file);
+                    firebase.storage().ref("yamlFiles").child(anim.rightAnimation.file + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                    firebase.storage().ref("mp4Files").child(anim.rightAnimation.file + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+
+                    document.getElementById('right_anim_name').value = animDownloadUrl;
+                    document.getElementById('right_anim_title').innerHTML = anim.rightAnimation.name;
+
+
+                    PlayRightAnimation(downloadUrl, anim.rightAnimation.name, anim.rightAnimation.duration);
+                })
+            });
+        }
+            // Left
+if(anim.leftAnimation){
+
+            firebase.storage().ref("yamlFiles").child(anim.leftAnimation.file + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+                firebase.storage().ref("mp4Files").child(anim.leftAnimation.file + ".mp4").getDownloadURL().then(function(downloadUrl) {
+                    console.log(animDownloadUrl);
+                    console.log(downloadUrl);
+                    gameInstance.SendMessage('ControllerHelper', 'ExecuteStartFromOutside', animDownloadUrl + "|" + animDownloadUrl);
+
+                    document.getElementById('left_anim_name').value = animDownloadUrl;
+                    document.getElementById('left_anim_title').innerHTML = anim.leftAnimation.name;
+
+                    PlayLeftAnimation(downloadUrl,anim.leftAnimation.name, anim.leftAnimation.duration);
+                })
+            });
+
+}               
+
+                }else{
+                    
+                    alert("Failed to find record with id: "+id);
+                    Errors.push("Record not found for id: "+id);
+                }                  
+                }
+                );
+
+           //set left and right animations
+
+            // Right
+          
+          
+            }  })();
+
+
+        
+       
         var gameInstance;
         // var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebBuild.json");
     </script>
