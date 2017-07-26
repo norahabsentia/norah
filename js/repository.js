@@ -87,7 +87,7 @@ function getVideos(page) {
         data.forEach(function(anim) {
             blocks += '<div class="box box' + (k++) + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
             blocks += '<div style="z-index: 111;">';
-            blocks += '<a class="newwwww" href="javascript:;"' + '" data-name="' + anim.name + '" data-displayName="' + anim.displayName + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+            blocks += '<a class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '" data-displayName="' + anim.displayName + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
             //  blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';   data-url="' + anim.animUrl
             blocks += '<a class="download-anim" data-name="' + anim.name + '.anim"  download href="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             blocks += '<div class="animation-name">' + anim.displayName + '</div>';
