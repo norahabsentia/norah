@@ -1,33 +1,3 @@
-/**
- * Updated: 17/07/2017
- * Updated By: Mayur
- * Changes: Improved performance, perfect pagination, urls with page numbers.
- */
-
-// DO NOT DELETE
-function animationsUpdated() {
-    firebase.database().ref("animations").once("value", function(ss) {
-        var allAnimations = ss.val();
-        var updates = {};
-        var storageBucket = firebase.app().options.storageBucket;
-        Object.keys(allAnimations).forEach(function(animKey) {
-            var animMp4Name = "mp4Files/" + allAnimations[animKey]['name'] + ".mp4";
-            var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
-            updates['animations/' + animKey + "/mp4Url"] = mp4Url;
-
-            var animFileName = "animFiles/" + allAnimations[animKey]['name'] + ".anim";
-            var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
-            updates['animations/' + animKey + "/animUrl"] = animFileUrl;
-        });
-        firebase.database().ref().update(updates);
-        console.log("completed");
-    });
-}
-
-
-//IMPORTANT: WHENEVER YOU ADD A NEW VIDEO, RUN THIS IN THE BROWSER CONSOLE:
-// animationsUpdated();
-
 var resultsPerPage = 12;
 var pages = 0;
 tags = [];
@@ -51,12 +21,12 @@ firebase.database().ref("animations").once("value", function(ss) {
         var storageBucket = firebase.app().options.storageBucket;
         var animMp4Name = "mp4Files/" + anim.name + ".mp4";
         var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
-
-        var animFileName = "animFiles/" + anim.name + ".anim";
-        var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
         anim.mp4Url = mp4Url;
-        anim.animUrl = animFileUrl;
 
+        firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
+            anim.animUrl = animDownloadUrl;
+
+        });
         return anim;
     }).sort(function(anim1, anim2) {
         return (anim1['displayName']).localeCompare(anim2['displayName']);
@@ -117,7 +87,7 @@ function getVideos(page) {
         data.forEach(function(anim) {
             blocks += '<div class="box box' + (k++) + ' fadeInUp clust" style="min-height:10px;background:#412A58;">';
             blocks += '<div style="z-index: 111;">';
-            blocks += '<a class="newwwww" href="javascript:;" data-duration="' + anim.duration + '" data-name="' + anim.name + '" data-displayName="' + anim.displayName + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
+            blocks += '<a class="newwwww" href="javascript:;"' + '" data-name="' + anim.name + '" data-displayName="' + anim.displayName + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Added to Library', '${anim.name}']);"` + '><i class="fa fa-plus-circle fa-2x" aria-hidden="true" ></i></a>';
             blocks += '<a class="download-anim" data-name="' + anim.name + '.anim" data-url="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             blocks += '<div class="animation-name">' + anim.displayName + '</div>';
             blocks += '</div>';
