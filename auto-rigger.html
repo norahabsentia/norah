@@ -87,7 +87,7 @@
 
     <body>
 
-       <a href='' id="Download" style="display:none"></a>
+        <a href='' id="Download" style="display:none"></a>
 
         <div class="main">
             <!--header-->
@@ -160,9 +160,9 @@
 
                     <div class="row no-gutters">
                         <form ref='uploadForm' id='uploadForm' action='https://absentiaautorig.com:443/upload' method='post' encType="multipart/form-data">
-                        <!--form ref='uploadForm' id='uploadForm' action='http://127.0.0.1:8080/upload' method='post' encType="multipart/form-data"-->
+                            <!--form ref='uploadForm' id='uploadForm' action='http://127.0.0.1:8080/upload' method='post' encType="multipart/form-data"-->
                             <input class="btn btn-success" type="file" id="js-upload" name="foo" accept=".obj, .OBJ" />
-                            <input type="text" name="key" id="key" value=" style="display:none" />
+                            <input type="text" name="key" id="key" style="display:none" />
 
                         </form>
                         <a href="#" id="js-upload-button" class="btn btn-success" style="visibility:hidden;">Please Wait...</a>
@@ -266,30 +266,30 @@
         <script src="js/grid/OBJLoader2.js"></script>
         <script src="js/grid/WWOBJLoader2.js"></script>
         <script>
-            var key = '' ;
+            var key = '';
             window.onload = function() {
 
                 var socket = io.connect('https://absentiaautorig.com:443');
                 //var socket = io.connect('http://127.0.0.1:8080');
-       
 
-                 socket.on('key',function(data){
 
-                   key = data.key;
-                   $('#key').val(key);
-                 
+                socket.on('key', function(data) {
+
+                    key = data.key;
+                    $('#key').val(key);
+
                 });
-                 socket.on('image',function(data){
-                   $.unblockUI();
-                   //var aTag = document.createElement('a');
-                   var aTag = document.getElementById('Download');
-                   //aTag.setAttribute('href','http://127.0.0.1:8080'+data.path);
-                   aTag.setAttribute('href','https://absentiaautorig.com:443'+data.path);
-                   aTag.setAttribute('download','');
-                   aTag.setAttribute('target','_blank');
-                   aTag.click();
-                   
-                 });
+                socket.on('image', function(data) {
+                    $.unblockUI();
+                    //var aTag = document.createElement('a');
+                    var aTag = document.getElementById('Download');
+                    //aTag.setAttribute('href','http://127.0.0.1:8080'+data.path);
+                    aTag.setAttribute('href', 'https://absentiaautorig.com:443' + data.path);
+                    aTag.setAttribute('download', '');
+                    aTag.setAttribute('target', '_blank');
+                    aTag.click();
+
+                });
 
                 /*
                  setTimeout(loaderPause, 15000);
@@ -692,7 +692,7 @@
 
                         uploadFiles();
                         $.blockUI();
-                        
+
 
                     };
 
@@ -712,7 +712,7 @@
                     app.render();
                 };
 
-                $('#uploadForm').submit(function(e){
+                $('#uploadForm').submit(function(e) {
                     //e.preventDefault();
                     $(this).ajaxSubmit();
                     console.log("UPLOADING DAta submit click");
