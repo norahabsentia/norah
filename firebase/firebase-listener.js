@@ -1,6 +1,7 @@
 $('.sign-in').click(function() {
     $('#myModal').modal('show');
 });
+var _paq = _paq || [];
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -13,7 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         $('.log-Out').css('display', 'block');
 
         // Piwik
-        var _paq = _paq || [];
+
         _paq.push(['setUserId', user.email]);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
@@ -57,7 +58,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
 
         // Piwik
-        var _paq = _paq || [];
+
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
