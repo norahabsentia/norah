@@ -1,3 +1,5 @@
+// use strict
+
 var resultsPerPage = 12;
 var pages = 0;
 tags = [];
@@ -12,7 +14,9 @@ if (window.location.hash != "") {
 var animationsArray = []
 $.blockUI();
 firebase.database().ref("animations").once("value", function(ss) {
+    console.log(ss);
     var allAnimations = ss.val();
+    console.log(allAnimations);
     animationsArray = Object.keys(allAnimations).map(function(k) {
         var anim = allAnimations[k];
 
@@ -22,6 +26,13 @@ firebase.database().ref("animations").once("value", function(ss) {
         var animMp4Name = "mp4Files/" + anim.name + ".mp4";
         var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
         anim.mp4Url = mp4Url;
+        if (!anim.rating) {
+            anim.rating = 0;
+        }
+        // firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        //     var username = snapshot.val().username;
+        //     // ...
+        // });
 
         firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
             anim.animUrl = animDownloadUrl;
@@ -92,7 +103,7 @@ function getVideos(page) {
             blocks += '<a class="download-anim" data-name="' + anim.name + '.anim"  download href="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             blocks += '<div class="animation-name">' + anim.displayName + '</div>';
             blocks += '<div class="rating-component-wrapper">';
-            blocks += '<div class="rating-component js-rating" data-stars="5">';
+            blocks += '<div class="rating-component js-rating" data-animation-id="' + anim.indexNumber +'" data-stars="' + anim.rating +'">';
             blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="1"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
             blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="2"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
             blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="3"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';

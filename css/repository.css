@@ -389,6 +389,9 @@ body {
 .rating-component[data-stars="5"] .rating-component__icon:nth-child(5) ~ .rating-component__icon polygon {
     fill: #d8d8d8;
 }
+.rating-component[data-stars="0"] .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
 
 
 /*.Rounded_Rectangle_1_copy {
