@@ -261,7 +261,6 @@ RatingComponent.prototype.onStarClick = function () {
 }
 
 RatingComponent.prototype.updateBd = function () {
-    console.log(this.data);
     var self = this;
     var item = '';
         self.data.forEach(function (el) {
@@ -269,7 +268,6 @@ RatingComponent.prototype.updateBd = function () {
             item = el;
         };
     });
-
     var firebaseKey = item.firebaseKey;
     var updateObject = {
         "animUrl" : item.animUrl,
@@ -281,11 +279,9 @@ RatingComponent.prototype.updateBd = function () {
         "name" : item.name,
         "tags" : item.tags,
         "yamlUrl" : item.yamlUrl,
-        "rating": self.currentAnimationId
-    }
-
-    console.log(firebaseKey,updateObject);
-}
+        "rating": self.currentRating
+    };
+};
 
 var SearchModule = function() {
     var keyword = ""
