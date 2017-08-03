@@ -86,7 +86,7 @@ function getVideos(page) {
 
     updatePagination(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
-    window.ratingComponent = new RatingComponent(data);
+    var ratingComponent = new RatingComponent(data);
 
     if (!data.length) {
         // Add toast code to blocks variable
