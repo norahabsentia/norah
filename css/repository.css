@@ -345,6 +345,51 @@ body {
     }
 }
 
+.rating-component {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    z-index: 199;
+}
+
+.rating-component:hover .rating-component__icon polygon {
+    fill: #ffd055 !important;
+}
+.rating-component .rating-component__icon {
+    display: inline-block;
+}
+.rating-component .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component .rating-component__icon:hover ~ .rating-component__icon polygon {
+    fill: #d8d8d8 !important;
+}
+.rating-component[data-stars] .rating-component__icon polygon {
+    fill: #ffd055;
+}
+.rating-component[data-stars="1"] .rating-component__icon:nth-child(1) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="2"] .rating-component__icon:nth-child(2) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="3"] .rating-component__icon:nth-child(3) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="4"] .rating-component__icon:nth-child(4) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="5"] .rating-component__icon:nth-child(5) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+
 
 /*.Rounded_Rectangle_1_copy {
   border-radius: 8px;

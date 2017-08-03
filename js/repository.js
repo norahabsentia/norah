@@ -91,6 +91,15 @@ function getVideos(page) {
             //  blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';   data-url="' + anim.animUrl
             blocks += '<a class="download-anim" data-name="' + anim.name + '.anim"  download href="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             blocks += '<div class="animation-name">' + anim.displayName + '</div>';
+            blocks += '<div class="rating-component-wrapper">';
+            blocks += '<div class="rating-component js-rating" data-stars="5">';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="1"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="2"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="3"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="4"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="5"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '</div>';
+            blocks += '</div>';
             blocks += '</div>';
             blocks += '<video autoplay loop  muted>';
             blocks += '<source src="' + anim.mp4Url + '" type="video/mp4" />';
@@ -157,6 +166,7 @@ function getVideos(page) {
         // })
 
         $.unblockUI();
+        RatingComponent();
 
     }
 }
@@ -195,6 +205,21 @@ function showSearchCount(count) {
 
 }
 
+
+function RatingComponent() {
+    console.log('Starting Rating');
+    var star = 'js-rating-star',
+        stars = document.querySelectorAll('.'+star);
+    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', function (event) {
+        console.log(event);
+        if (!event.target.dataset.rating) {
+            event.target.parentElement.parentElement.dataset.stars = event.target.parentElement.dataset.rating;
+        } else {
+            event.target.parentElement.dataset.stars = event.target.dataset.rating;
+        }
+    }, false);
+    console.log('Finished Rating');
+};
 
 var SearchModule = function() {
     var keyword = ""
@@ -303,3 +328,4 @@ jQuery(document).ready(function() {
 
 
 });
+
