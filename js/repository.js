@@ -217,72 +217,6 @@ function showSearchCount(count) {
 
 }
 
-
-function RatingComponent(data) {
-    console.log('Starting Rating');
-    this.name = "RatingComponent";
-    this.data = data;
-    this.star = 'js-rating-star';
-    this.currentAnimationId = 0;
-    this.currentRating = 0;
-    console.log('Finished Rating');
-};
-
-RatingComponent.prototype.init = function () {
-    this.onStarClick();
-}
-
-RatingComponent.prototype.onStarClick = function () {
-    var self = this;
-    var stars = document.querySelectorAll('.'+ self.star);
-    function setCurrent(num, rate) {
-        self.currentAnimationId = num;
-        self.currentRating = rate;
-
-        console.log(num, rate);
-        self.updateBd();
-    }
-    function iconClicked() {
-        console.log(this, self);
-        var rating = '';
-        if (!this.dataset.rating) {
-
-            this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
-            var rating = this.parentElement.dataset.rating;
-            setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
-        } else {
-
-            this.parentElement.dataset.stars = this.dataset.rating;
-            var rating = this.dataset.rating;
-            setCurrent(this.parentElement.dataset.animationId,rating);
-        }
-    }
-    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', iconClicked.bind(stars[i]), false);
-}
-
-RatingComponent.prototype.updateBd = function () {
-    var self = this;
-    var item = '';
-        self.data.forEach(function (el) {
-        if (el.indexNumber == self.currentAnimationId) {
-            item = el;
-        };
-    });
-    var firebaseKey = item.firebaseKey;
-    var updateObject = {
-        "animUrl" : item.animUrl,
-        "displayName" : item.displayName,
-        "duration" : item.duration,
-        "indexNumber" : item.indexNumber,
-        "jsonUrl" : item.jsonUrl,
-        "mp4Url" : item.mp4Url,
-        "name" : item.name,
-        "tags" : item.tags,
-        "yamlUrl" : item.yamlUrl,
-        "rating": self.currentRating
-    };
-};
-
 var SearchModule = function() {
     var keyword = ""
     return {
@@ -332,7 +266,75 @@ var SearchModule = function() {
 
 }();
 
+// Rating Component
 
+function RatingComponent(data) {
+    console.log('Starting Rating');
+    this.name = "RatingComponent";
+    this.data = data;
+    this.star = 'js-rating-star';
+    this.currentAnimationId = 0;
+    this.currentRating = 0;
+    console.log('Finished Rating');
+};
+
+RatingComponent.prototype.init = function () {
+    this.onStarClick();
+}
+
+RatingComponent.prototype.onStarClick = function () {
+    var self = this;
+    var stars = document.querySelectorAll('.'+ self.star);
+    function setCurrent(num, rate) {
+        self.currentAnimationId = num;
+        self.currentRating = rate;
+
+        console.log(num, rate);
+        self.updateBd();
+    }
+    function iconClicked() {
+        console.log(this, self);
+        var rating = '';
+        if (!this.dataset.rating) {
+
+            this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
+            var rating = this.parentElement.dataset.rating;
+            setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
+        } else {
+
+            this.parentElement.dataset.stars = this.dataset.rating;
+            var rating = this.dataset.rating;
+            setCurrent(this.parentElement.dataset.animationId,rating);
+        }
+    }
+    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', iconClicked.bind(stars[i]), false);
+}
+
+RatingComponent.prototype.updateBd = function () {
+    var self = this;
+    var item = '';
+    self.data.forEach(function (el) {
+        if (el.indexNumber == self.currentAnimationId) {
+            item = el;
+        };
+    });
+    var firebaseKey = item.firebaseKey;
+    var updateObject = {
+        "animUrl" : item.animUrl,
+        "displayName" : item.displayName,
+        "duration" : item.duration,
+        "indexNumber" : item.indexNumber,
+        "jsonUrl" : item.jsonUrl,
+        "mp4Url" : item.mp4Url,
+        "name" : item.name,
+        "tags" : item.tags,
+        "yamlUrl" : item.yamlUrl,
+        "rating": self.currentRating
+    };
+    firebase.database().ref('/animations/' + firebaseKey).set(updateObject);
+};
+
+// End Rating Component
 
 jQuery(document).ready(function() {
     firebase.database().ref("/tags/").once('value').then(function(snapshot) {
