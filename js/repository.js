@@ -86,6 +86,7 @@ function getVideos(page) {
 
     updatePagination(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
+    window.ratingComponent = new RatingComponent(data);
 
     if (!data.length) {
         // Add toast code to blocks variable
@@ -177,7 +178,7 @@ function getVideos(page) {
         // })
 
         $.unblockUI();
-        RatingComponent();
+        ratingComponent.init();
 
     }
 }
@@ -217,20 +218,74 @@ function showSearchCount(count) {
 }
 
 
-function RatingComponent() {
+function RatingComponent(data) {
     console.log('Starting Rating');
-    var star = 'js-rating-star',
-        stars = document.querySelectorAll('.'+star);
-    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', function (event) {
-        console.log(event);
-        if (!event.target.dataset.rating) {
-            event.target.parentElement.parentElement.dataset.stars = event.target.parentElement.dataset.rating;
-        } else {
-            event.target.parentElement.dataset.stars = event.target.dataset.rating;
-        }
-    }, false);
+    this.name = "RatingComponent";
+    this.data = data;
+    this.star = 'js-rating-star';
+    this.currentAnimationId = 0;
+    this.currentRating = 0;
     console.log('Finished Rating');
 };
+
+RatingComponent.prototype.init = function () {
+    this.onStarClick();
+}
+
+RatingComponent.prototype.onStarClick = function () {
+    var self = this;
+    var stars = document.querySelectorAll('.'+ self.star);
+    function setCurrent(num, rate) {
+        self.currentAnimationId = num;
+        self.currentRating = rate;
+
+        console.log(num, rate);
+        self.updateBd();
+    }
+    function iconClicked() {
+        console.log(this, self);
+        var rating = '';
+        if (!this.dataset.rating) {
+
+            this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
+            var rating = this.parentElement.dataset.rating;
+            setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
+        } else {
+
+            this.parentElement.dataset.stars = this.dataset.rating;
+            var rating = this.dataset.rating;
+            setCurrent(this.parentElement.dataset.animationId,rating);
+        }
+    }
+    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', iconClicked.bind(stars[i]), false);
+}
+
+RatingComponent.prototype.updateBd = function () {
+    console.log(this.data);
+    var self = this;
+    var item = '';
+        self.data.forEach(function (el) {
+        if (el.indexNumber == self.currentAnimationId) {
+            item = el;
+        };
+    });
+
+    var firebaseKey = item.firebaseKey;
+    var updateObject = {
+        "animUrl" : item.animUrl,
+        "displayName" : item.displayName,
+        "duration" : item.duration,
+        "indexNumber" : item.indexNumber,
+        "jsonUrl" : item.jsonUrl,
+        "mp4Url" : item.mp4Url,
+        "name" : item.name,
+        "tags" : item.tags,
+        "yamlUrl" : item.yamlUrl,
+        "rating": self.currentAnimationId
+    }
+
+    console.log(firebaseKey,updateObject);
+}
 
 var SearchModule = function() {
     var keyword = ""
