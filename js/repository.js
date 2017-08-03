@@ -319,6 +319,12 @@ RatingComponent.prototype.updateBd = function () {
         };
     });
     var firebaseKey = item.firebaseKey;
+    var rate = 0;
+    if (item.rating !== 0) {
+        rate = Math.round((self.currentRating/2 + item.rating/2));
+    } else {
+        rate = self.currentRating;
+    }
     var updateObject = {
         "animUrl" : item.animUrl,
         "displayName" : item.displayName,
@@ -329,7 +335,7 @@ RatingComponent.prototype.updateBd = function () {
         "name" : item.name,
         "tags" : item.tags,
         "yamlUrl" : item.yamlUrl,
-        "rating": self.currentRating
+        "rating": rate
     };
     firebase.database().ref('/animations/' + firebaseKey).set(updateObject);
 };
