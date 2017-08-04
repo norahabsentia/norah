@@ -1,3 +1,5 @@
+// use strict
+
 var resultsPerPage = 12;
 var pages = 0;
 tags = [];
@@ -12,7 +14,9 @@ if (window.location.hash != "") {
 var animationsArray = []
 $.blockUI();
 firebase.database().ref("animations").once("value", function(ss) {
+    console.log(ss);
     var allAnimations = ss.val();
+    console.log(allAnimations);
     animationsArray = Object.keys(allAnimations).map(function(k) {
         var anim = allAnimations[k];
 
@@ -22,6 +26,13 @@ firebase.database().ref("animations").once("value", function(ss) {
         var animMp4Name = "mp4Files/" + anim.name + ".mp4";
         var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
         anim.mp4Url = mp4Url;
+        if (!anim.rating) {
+            anim.rating = 0;
+        }
+        // firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        //     var username = snapshot.val().username;
+        //     // ...
+        // });
 
         firebase.storage().ref("animFiles").child(anim.name + ".anim").getDownloadURL().then(function(animDownloadUrl) {
             anim.animUrl = animDownloadUrl;
@@ -75,6 +86,7 @@ function getVideos(page) {
 
     updatePagination(anim_final);
     var data = anim_final.slice(offset, (page * resultsPerPage));
+    var ratingComponent = new RatingComponent(data);
 
     if (!data.length) {
         // Add toast code to blocks variable
@@ -91,6 +103,15 @@ function getVideos(page) {
             //  blocks += '<a onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '" data-name="' + anim.name + '.anim" download href="' + animDownloadUrl + '"><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';   data-url="' + anim.animUrl
             blocks += '<a class="download-anim" data-name="' + anim.name + '.anim"  download href="' + anim.animUrl + '" onclick=' + `"javascript:_paq.push(['trackEvent', 'Downloaded', '${anim.name}']);"` + '><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>';
             blocks += '<div class="animation-name">' + anim.displayName + '</div>';
+            blocks += '<div class="rating-component-wrapper">';
+            blocks += '<div class="rating-component js-rating" data-animation-id="' + anim.indexNumber +'" data-stars="' + anim.rating +'">';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="1"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="2"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="3"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="4"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '<svg class="rating-component__icon js-rating-star" height="25" width="23" class="star rating" data-rating="5"> <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/></svg>';
+            blocks += '</div>';
+            blocks += '</div>';
             blocks += '</div>';
             blocks += '<video autoplay loop  muted>';
             blocks += '<source src="' + anim.mp4Url + '" type="video/mp4" />';
@@ -157,6 +178,7 @@ function getVideos(page) {
         // })
 
         $.unblockUI();
+        ratingComponent.init();
 
     }
 }
@@ -194,7 +216,6 @@ function showSearchCount(count) {
     }
 
 }
-
 
 var SearchModule = function() {
     var keyword = ""
@@ -245,11 +266,83 @@ var SearchModule = function() {
 
 }();
 
+// Rating Component
 
+function RatingComponent(data) {
+    console.log('Starting Rating');
+    this.name = "RatingComponent";
+    this.data = data;
+    this.star = 'js-rating-star';
+    this.currentAnimationId = 0;
+    this.currentRating = 0;
+    console.log('Finished Rating');
+};
+
+RatingComponent.prototype.init = function () {
+    this.onStarClick();
+}
+
+RatingComponent.prototype.onStarClick = function () {
+    var self = this;
+    var stars = document.querySelectorAll('.'+ self.star);
+    function setCurrent(num, rate) {
+        self.currentAnimationId = num;
+        self.currentRating = rate;
+        self.updateBd();
+    }
+    function iconClicked() {
+        var rating = '';
+        if (!(firebase.auth().currentUser)) {
+            alert('Please login');
+        } else {
+            if (!this.dataset.rating) {
+                this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
+                var rating = this.parentElement.dataset.rating;
+                setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
+            } else {
+                this.parentElement.dataset.stars = this.dataset.rating;
+                var rating = this.dataset.rating;
+                setCurrent(this.parentElement.dataset.animationId,rating);
+            }
+        }
+    }
+    for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', iconClicked.bind(stars[i]), false);
+}
+
+RatingComponent.prototype.updateBd = function () {
+    var self = this;
+    var item = '';
+    self.data.forEach(function (el) {
+        if (el.indexNumber == self.currentAnimationId) {
+            item = el;
+        };
+    });
+    var firebaseKey = item.firebaseKey;
+    var rate = 0;
+    if (item.rating !== 0) {
+        rate = Math.round((self.currentRating/2 + item.rating/2));
+    } else {
+        rate = self.currentRating;
+    }
+    var updateObject = {
+        "animUrl" : item.animUrl,
+        "displayName" : item.displayName,
+        "duration" : item.duration,
+        "indexNumber" : item.indexNumber,
+        "jsonUrl" : item.jsonUrl,
+        "mp4Url" : item.mp4Url,
+        "name" : item.name,
+        "tags" : item.tags,
+        "yamlUrl" : item.yamlUrl,
+        "rating": rate
+    };
+    firebase.database().ref('/animations/' + firebaseKey).set(updateObject);
+};
+
+// End Rating Component
 
 jQuery(document).ready(function() {
     firebase.database().ref("/tags/").once('value').then(function(snapshot) {
-
         var fireObject = snapshot.val();
         var t = 0;
 
@@ -263,7 +356,6 @@ jQuery(document).ready(function() {
             $(".menuS").append('<li role="presentation"' + active + '><a href="javascript:;">' + key + '</a>' + sabUl + '</li>');
             ++t;
         }
-
         $(".subManuLi").off('click').on('click', function() {
             var subLi = '';
             if (!$(this).hasClass("activeTag")) {
@@ -303,3 +395,4 @@ jQuery(document).ready(function() {
 
 
 });
+

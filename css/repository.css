@@ -345,6 +345,62 @@ body {
     }
 }
 
+.rating-component {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 199;
+}
+
+.rating-component:hover .rating-component__icon polygon {
+    fill: rgb(255, 208, 85) !important;
+    transition: fill .05s ease-out .01s, fill-opacity .016s ease-in .0s;
+    fill-opacity: 1;
+}
+.rating-component .rating-component__icon {
+    display: inline-block;
+}
+.rating-component .rating-component__icon polygon {
+    fill: #d8d8d8;
+
+    /*transition: fill .21s ease-in .12s, fill-opacity .12s ease-out .10s;*/
+
+}
+.rating-component .rating-component__icon:hover ~ .rating-component__icon polygon {
+    fill: #d8d8d8 !important;
+
+}
+.rating-component[data-stars] .rating-component__icon polygon {
+    fill: rgba(255, 208, 85, .85);
+    fill-opacity: .85;
+
+}
+.rating-component[data-stars="1"] .rating-component__icon:nth-child(1) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="2"] .rating-component__icon:nth-child(2) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="3"] .rating-component__icon:nth-child(3) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="4"] .rating-component__icon:nth-child(4) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="5"] .rating-component__icon:nth-child(5) ~ .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+.rating-component[data-stars="0"] .rating-component__icon polygon {
+    fill: #d8d8d8;
+}
+
 
 /*.Rounded_Rectangle_1_copy {
   border-radius: 8px;
