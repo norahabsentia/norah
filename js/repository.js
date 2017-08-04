@@ -288,23 +288,22 @@ RatingComponent.prototype.onStarClick = function () {
     function setCurrent(num, rate) {
         self.currentAnimationId = num;
         self.currentRating = rate;
-
-        console.log(num, rate);
         self.updateBd();
     }
     function iconClicked() {
-        console.log(this, self);
         var rating = '';
-        if (!this.dataset.rating) {
-
-            this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
-            var rating = this.parentElement.dataset.rating;
-            setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
+        if (!(firebase.auth().currentUser)) {
+            alert('Please login');
         } else {
-
-            this.parentElement.dataset.stars = this.dataset.rating;
-            var rating = this.dataset.rating;
-            setCurrent(this.parentElement.dataset.animationId,rating);
+            if (!this.dataset.rating) {
+                this.parentElement.parentElement.dataset.stars = this.parentElement.dataset.rating;
+                var rating = this.parentElement.dataset.rating;
+                setCurrent(this.parentElement.parentElement.dataset.animationId,rating);
+            } else {
+                this.parentElement.dataset.stars = this.dataset.rating;
+                var rating = this.dataset.rating;
+                setCurrent(this.parentElement.dataset.animationId,rating);
+            }
         }
     }
     for (i = 0; i < stars.length; i++) stars[i].addEventListener('click', iconClicked.bind(stars[i]), false);
@@ -344,7 +343,6 @@ RatingComponent.prototype.updateBd = function () {
 
 jQuery(document).ready(function() {
     firebase.database().ref("/tags/").once('value').then(function(snapshot) {
-
         var fireObject = snapshot.val();
         var t = 0;
 
@@ -358,7 +356,6 @@ jQuery(document).ready(function() {
             $(".menuS").append('<li role="presentation"' + active + '><a href="javascript:;">' + key + '</a>' + sabUl + '</li>');
             ++t;
         }
-
         $(".subManuLi").off('click').on('click', function() {
             var subLi = '';
             if (!$(this).hasClass("activeTag")) {
