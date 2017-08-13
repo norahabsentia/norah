@@ -1,0 +1,45 @@
+@media (min-width: 1200px) and (max-width: 1300px) {} 
+
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.merger_container_animation .col-md-4 img {
+		width: 100%;
+	}
+	.merger_container_animation h2 {
+		display: inline-block;
+	}
+	.merger_container_animation .col-md-4 {
+	    margin: 0 0 80px 0;
+	}
+	.blending_control {
+		padding: 200px 0 0 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.merger_container_animation .col-md-4 img {
+	    height: 200px;
+	}
+	.merger_container_animation .col-md-4 {
+	    margin: 0 0 40px 0;
+	}
+	.merger_container_animation h2 {
+		display: inline-block;
+	}
+	.blending_control_block label {
+		width: 100%;
+	}
+}
+
+@media (min-width: 567px) and (max-width: 767px){}
+
+@media (min-width: 480px) and (max-width: 567px){}
+
+@media (min-width: 320px) and (max-width: 480px){}
+
+
+
+ 
+ 

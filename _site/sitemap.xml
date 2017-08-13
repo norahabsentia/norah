@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://norah.ai/</loc>
+  <lastmod>2017-07-22T19:45:01+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/index</loc>
+  <lastmod>2017-07-22T19:45:01+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/auto-rigger</loc>
+  <lastmod>2017-07-22T19:45:04+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/repository</loc>
+  <lastmod>2017-07-22T19:44:59+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/style-transfer-tool</loc>
+  <lastmod>2017-07-21T10:02:05+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/motion-editor</loc>
+  <lastmod>2017-07-22T19:45:00+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/my-library</loc>
+  <lastmod>2017-07-22T19:44:59+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/tutorials</loc>
+  <lastmod>2017-07-22T20:37:33+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/blog</loc>
+  <lastmod>2017-07-22T20:37:33+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/about</loc>
+  <lastmod>2017-07-22T19:45:06+00:00</lastmod>
+</url>
+<url>
+  <loc>http://norah.ai/contact</loc>
+  <lastmod>2017-07-22T19:45:02+00:00</lastmod>
+</url>
+</urlset>

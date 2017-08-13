@@ -1,0 +1,491 @@
+/*===== Common Class =====*/
+html
+{
+    -webkit-font-smoothing: antialiased;
+}
+
+body
+{
+    font-size: 14px;
+    margin: 0   !important;
+    padding: 0  !important ;
+    background-color: #39244E;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    outline: none;
+    color:#e9e9e9;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p
+{
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+ul
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a,
+a:hover
+{
+    text-decoration: none  ;
+    outline: none;
+}
+
+a:focus,
+select:focus
+{
+    outline: none;
+}
+
+
+
+a,
+input,
+button,
+textarea
+{
+    outline: none !important;
+}
+
+img
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+:focus
+{
+    outline: none;
+}
+
+.fr
+{
+    float: right !important;
+}
+
+.fl
+{
+    float: left !important;
+}
+
+/*====================================
+      Bootstrap Class override Strat
+======================================*/
+
+@media (min-width: 768px)
+{
+    .container
+    {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px)
+{
+    .container
+    {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1170px)
+{
+    .container
+    {
+        width: 1170px;
+    }
+}
+
+
+
+
+/*====================================
+     Bootstrap Class override End
+======================================*/
+
+
+/*===================================== 
+        New Class 
+=======================================*/
+
+
+
+/* Home page start  */
+
+.main_wapper
+{   position: relative;
+    float: left;
+    width: 100%;
+}
+
+.merger_container {
+    width: 100%;
+    float: left;
+    padding: 30px 0;
+}
+.merger_container h1 {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px; padding-bottom: 10px;
+    
+    
+}
+.merger_container_animation {
+    margin: 40px 0 0 0;
+}
+.merger_container_animation h2 {
+    padding: 0 0 10px 0;
+        width: 100%;
+    min-height: 47px;
+    text-align: center;
+    
+    font-size: 20px;
+    color: #e9e9e9;
+}
+.merger_container_animation span {
+    text-align: center;
+    padding: 10px 0 0 0;
+    display: inline-block;
+    width: 100%;
+    color:#e9e9e9;
+}
+.in_bg {
+    padding: 10px;
+    border-bottom: 1px solid #6B5A7A;
+    border-right: none;
+    border-left: none;
+    float: left;
+    width: 260px;
+    border-top: none;
+    background-color:#6B5A7A;
+    color:#e9e9e9;
+}
+.output-window-img {
+    border: 1px solid #2b1c3c;
+    height: 250px;
+    background-color:#2B1C3C;
+    border-top: 1em;
+    width:330px;
+}
+.merger_container_animation .col-md-4 img {
+    height: 292px;
+}
+.merger_container_animation .image {
+    background-image: url("images/img.png");
+    width:316px;height:409px;
+    
+    border-radius: 1em;
+    
+}
+.merger_container_animation .col-md-4 {
+    height: 280px;
+}
+.right-action-btn a {
+    color: #000;
+    font-size: 20px;
+    padding: 0 0 0 0;
+    display: inline-block;
+    border: 1px solid;
+    width: 35px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px; margin-bottom: 5px; height: 31px;
+}
+.right-action-btn {
+    width: 90px;
+    float: left;
+    background-color:#594B68;
+}
+.right-action-btn a:hover {
+    background: #000;
+    color: #fff;
+}
+.blending_options {
+    width: 100%;
+    float: left;
+    padding: 20px 0 0 0;
+}
+.blending_options h3 {
+    font-size: 17px;
+    padding: 0 0 5px 0;
+    color: #e9e9e9;
+}
+
+
+.ran_control {
+    padding: 300px 0 0 0;
+    float: left;
+    width: 100%;
+}
+.blending_control h4{
+    font-weight: 600;
+    color: #C16585;
+	margin-top: 350px;
+}
+.blending_control_block {
+    width: 100%;
+    float: left;
+    padding: 20px 0;
+}
+.blending_control h4 {
+
+}
+.blending_control_block label {
+    float: left;
+    width: 10%;
+    font-weight: normal;
+    font-size: 20px;
+}
+.blending_control_block .range-slider {
+    width: 90%;
+    margin: 10px 0 0 0;
+    float: left;
+}
+.link .link_button{
+    width: 100px; 
+    height: 50px; 
+    font-size:20px; 
+    background-color:#39244E; 
+    border-color: #39244E;
+    border:1px;
+    color:#fff;
+    
+}
+.link a{
+    font-size:20px;
+}
+.link a:hover {
+    background-color:violet;
+    color: #fff;
+}
+.link .link_button:hover {
+    background-color:#E36480;
+    color: #fff;
+}
+nav.tm_navbar {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    float: left;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+}
+header {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 11;
+    background: #4b3065; 
+    box-shadow: 0px 4px 4px 0px #3D2854;
+    width: 1178px; left: 90px;top: -30px;
+}
+nav.tm_navbar li:first-child::after {
+    display: none;
+}
+nav.tm_navbar li::after {
+    background: #412a58 none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 1;
+}
+nav.tm_navbar li {
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+nav.tm_navbar li a {
+    background: #4b3065 none repeat scroll 0 0;
+    color: #ffffff;
+    font: 18px/68px "Questrial";
+    padding: 0;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+    width: 180px;
+}
+a {
+    text-decoration: none;
+}
+nav.tm_navbar .sub-menu > ul {
+    background-color: #2f2041;
+    left: -2px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+nav.tm_navbar .sub-menu > ul {
+    background: #e36480 none repeat scroll 0 0;
+    border: 1px solid #412a58;
+    display: none;
+    left: 0;
+    list-style: outside none none;
+    margin: 0;
+    overflow: visible;
+    padding: 20px 0;
+    position: absolute;
+    text-align: left;
+    top: 68px;
+    width: 215px;
+    z-index: 11;
+}
+nav.tm_navbar li {
+    font-size: 14px;
+    line-height: 20px;
+}
+nav.tm_navbar li {
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.follow_icon li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+    margin-top: 3%;
+}
+.follow_icon {
+    padding: 15px 0 10px 22px;
+}
+.follow_icon {
+    background-color: #e36480;
+    color: white;
+    cursor: pointer;
+    float: right;
+    list-style: outside none none;
+    margin: 0;
+    overflow: hidden;
+    padding: 20px 0 10px 18px;
+     margin-top: 1px;
+    width: 27%;
+}
+.follow_icon li:first-child {
+    margin-left: 0;
+}
+.follow_icon li {
+    float: left;
+    margin-left: 14px;
+}
+.cosialIcon {
+    float: left;
+}
+.cosialIcon {
+    float: left;
+}
+.cosialIcon {
+    float: left;
+}
+.follow_icon {
+    color: white;
+    cursor: pointer;
+    list-style: outside none none;
+}
+.log-Out {
+    display: none;
+}
+.regB {
+    background-color: #e36480;
+    border: medium none;
+    display: none;
+    outline: medium none;
+    padding: 10px 19px;
+    width: 129px;
+}
+.regB i {
+    padding-right: 19%;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+.fa-sign-in::before {
+    content: "";
+}
+.fa-angle-down::before {
+    content: "";
+}
+nav.tm_navbar li span {
+    bottom: 9px;
+    color: #ffffff;
+    font-size: 12px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    transition: all 0.35s ease 0s;
+    width: 100%;
+    z-index: 0;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+nav.tm_navbar li:hover > a {
+	color: #ffffff;
+	 background: #e36480 !important; 
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+nav.tm_navbar li:hover > span {
+	color: #ffffff;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+nav.tm_navbar .sfHover > a {
+	color: #ffffff;
+	background: #e36480 !important;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+nav.tm_navbar .sfHover > span {
+	color: #ffffff;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.head_h1{
+    width: 1178px; 
+    margin-left: 90px; 
+    background-color:#6A597A; 
+    position:absolute;
+    top:70px;
+}

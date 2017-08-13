@@ -1,0 +1,12 @@
+--- 
+layout: default 
+---
+<div class="container">
+    <h2>{{ page.title }}</h2>
+
+    <div class="blog-post" style="background:#ffffff;text-align:left;"><br>
+        <span class="date">{{ page.date | date: '%B %d, %Y' }}</span><!--</p>-->
+        <br>
+        <br> {{ content }}
+    </div>
+</div>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NORAH.AI</title>
+    <meta name="_globalsign-domain-verification" content="BaI_e8Kezc29wMu-N4Uym-9U3VUDAkEDxNZM80mhyB" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <meta name="description" content="Norah AI is a revolutionary, A.I. empowered workflow for generating games. The A.I. enables quick creation and incorporation of all different game elements ranging from creation of 3D models and their animation to story
+                                    weaving and texturing.">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <meta name="format-detection" content="telephone=no" />
+    <!-- firebase -->
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+
+    <script src="firebase/providers.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact-form.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reg_form.css">
+    <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/rigger_popup.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!--JS-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+
+    <script src="js/sForm.js"></script>
+    <script src="js/active.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/wow/wow.js"></script>
+    <script src="js/wow/device.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function() {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <style>
+        #content {
+            overflow: hidden;
+            height: 0.6em;
+            line-height: 1em;
+            width: 915px;
+        }
+        
+        #more:checked+div {
+            height: auto;
+        }
+        
+        a.orange {
+            color: orange;
+            cursor: pointer;
+        }
+        
+        p.text {
+            font-size: 20px;
+            font-family: Helvetica;
+            font-stretch: expanded;
+            letter-spacing: 2.5px;
+            text-align: left;
+            margin-left: 35%;
+            color: white;
+        }
+        
+        p.link {
+            font-size: 20px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.big {
+            font-size: 30px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.linkred {
+            font-size: 20px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.linkblackcenter {
+            font-size: 20px;
+            font-family: Helvetica;
+            margin-left: 32%;
+            color: black;
+        }
+        
+        p.bigred {
+            font-size: 40px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 35%;
+            color: orange;
+        }
+        
+        p.bigblack {
+            font-size: 30px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 0%;
+            color: black;
+        }
+        
+        p.biggerblack {
+            font-size: 40px;
+            font-family: Helvetica;
+            text-align: left;
+            margin-left: 0%;
+            color: black;
+        }
+        
+        p.textblack {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: -19px;
+        }
+        
+        header {
+            top: -15px;
+            left: 120px;
+            width: 1200px;
+        }
+        
+        p3 {
+            font-size: 19px;
+        }
+        
+        p4 {
+            font-size: 12px;
+        }
+        
+        .back-link a {
+            color: #4ca340;
+            text-decoration: none;
+            border-bottom: 1px #4ca340 solid;
+        }
+        
+        .back-link a:hover,
+        .back-link a:focus {
+            color: #408536;
+            text-decoration: none;
+            border-bottom: 1px #408536 solid;
+        }
+        
+        h1 {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+            margin: 0;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            color: orange;
+            font-size: 32px;
+            margin-bottom: 3px;
+        }
+        
+        h2 {
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: normal;
+            padding-left: 80px;
+        }
+        
+        .entry-header .inner {
+            text-align: left;
+            margin: 0 auto 20px auto;
+            width: 800px;
+        }
+        
+        .entry-header {
+            padding-top: 20px;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px #ebebeb solid;
+        }
+    </style>
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            if (window.location.href.indexOf("norah.ai") > -1) {
+                console.log("You are at norah.ai");
+                var u = "//piwik.norah.ai/";
+            } else {
+                var u = "http://35.185.180.253/";
+            }
+
+
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            if (window.location.href.indexOf("norah.ai") > -1) {
+                console.log("You are at norah.ai");
+                _paq.push(['setSiteId', '1']);
+            } else if (window.location.href.indexOf("norahabsentia") > -1) {
+                _paq.push(['setSiteId', '1']);
+            } else {
+                _paq.push(['setSiteId', '2']);
+            }
+
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = 'https://cdnjs.cloudflare.com/ajax/libs/piwik/3.0.4/piwik.js'
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript><p><img src="//piwik.norah.ai/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+</head>
+
+<body>
+
+    <!-- <div class="inner"> -->
+
+
+
+
+    <div class="main">
+
+        <!--header-->
+        <section id="fadeInAnim">
+            <header class="clearfix" left="93px">
+                <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                    <ul class="nav sf-menu  clearfix">
+
+                        <li class="sub-menu"><a href="index">Home</a><span class="fa fa-angle-down"></span>
+                            <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="index">Animation</a>
+                                    <ul class="bodysub">
+                                        <li><a href="auto-rigger" style="cursor:pointer;">Auto Rigger</a></li>
+                                        <li><a href="repository">Repository</a></li>
+                                        <li><a href="style-transfer-tool">Style Transfer</a></li>
+                                        <li><a href="motion-editor">Motion Editor</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">3D Modelling</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Game maker</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li><a href="my-library">My Library</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+
+
+                    </ul>
+                </nav>
+                <div class="follow_icon reposFollowIcon">
+                    <div class="user-mail pull-right"></div>
+                    <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                    <div class="sign-in">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i><p3>Sign-in</p3></button>
+                    </div>
+                </div>
+            </header>
+            <div class="section-content">
+                <div class="copy-container">
+
+
+                </div>
+                <img src="img/1.jpg" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim2">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="big">ANIMATIONS</p>
+                    <p class="text">Experiment with NORAH AI<br>on endless possibilities<br>of animations</p>
+                    <p class="link">
+                        <a class="orange" href="home">Try Now</a> | <a class="orange" onclick="readme2()"> Read more</a> </p>
+
+
+                    <div id="content">
+                        <p class="text">
+                            · AutoRig – See your 3D characters come to life as our tool automatically adds a skeleton to the character <br>· Endless repository – Explore and choose from our ever-growing animation library <br>· Style Transfer – Create
+                            new and unique animations by mixing two together <br>· Motion editor – Customize and fine tune your creation with our frame-by-frame tweaker</p>
+                    </div>
+
+
+                </div>
+                <img src="img/2.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim3">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="bigblack">3D MODELLING</p>
+                    <p class="text-black">Expand the horizons of art creation by <strong>NORAH AI</strong></p><br> Read more | Coming soon
+                </div>
+                <img src="img/3.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim4">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="bigred">T E X T U R I N G</p>
+                    <p class="text">Bring your creations to life</p>
+                    <p class="linkred">
+                        Read more | Coming soon</p>
+                </div>
+                <img src="img/4.png" alt="iPhone" />
+            </div>
+        </section>
+        <section id="fadeInAnim5">
+            <div class="section-content">
+                <div class="copy-container">
+                    <p class="biggerblack">M O B I L E&nbsp; G A M E&nbsp; F O R G E R</p>
+                    <p class="textblack">Partner with NORAH AI to develop Premium mobile games using its comprehensive AI driven workflow.</p>
+                    <p class="linkblackcenter">
+                        Read more | Coming soon</p>
+
+                </div>
+                <img src="img/5.png" alt="iPhone" />
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="reg">
+                <img src="img/blank_modal.png" alt="Norah.ai" class="img-logo img responsive">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                    </div>
+
+                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                    <div id="firebaseui-auth-container"></div>
+                    <br>
+                    <br>
+                    <p align="center" class="new-animake">Sign-up</p>
+                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                    </div>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btnreg btn-default but2" type="button" id="regBtn" align="center">Create account</button>
+                    <p class="already-reg">already registered?</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/tm-scripts.js"></script>
+    <!--script src="./firebase_files/ie10-viewport-bug-workaround.js "></script-->
+    <script src="js/firebaseAuth.js"></script>
+    <script src="firebase/login.js"></script>
+    <script src="firebase/register.js"></script>
+    <script src="firebase/firebase-listener.js"></script>
+    <script>
+        function placeH1() {
+            document.getElementById('tp3').style.display = 'none';
+        }
+
+        function readme2() {
+            document.querySelector('#content').style.height = 'auto';
+            this.style.display = 'none';
+        }
+    </script>
+
+
+    <script type="text/javascript" src="js/onepagescroll/jquery.onepage-scroll.js"></script>
+    <link href='js/onepagescroll/onepage-scroll.css' rel='stylesheet' type='text/css'>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq = [
+            ['_setAccount', ''],
+            ['_trackPageview']
+        ];
+        (function(d, t) {
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.src = '//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+
+</body>
+
+</html>

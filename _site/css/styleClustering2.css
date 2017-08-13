@@ -1,0 +1,62 @@
+.radioBox span{
+	font-size: 23px;
+    text-align: center;
+    color: white;
+    margin-left: 3%;
+}
+.radioBox p{
+	font-size: 20px; 
+}
+.mardukner{
+	padding-top: 1%;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.radioB div{
+		padding: 12% 0;
+	}
+}
+@media (min-width: 627px) and (max-width: 767px){
+	.follow_icon {
+    	width: 53%;
+	}	
+}
+@media (min-width: 560px) and (max-width: 626px){
+	.col-xs-6 {
+    	width: 105%!important;
+	}
+	.radioB div {
+    	padding: 5%;
+    	
+	}
+	.mardukner{
+		text-align: center;
+	}
+	
+}
+@media (min-width: 458px) and (max-width: 560px){
+	.container{
+		padding-left: 0;
+	}
+	.col-xs-6 {
+    	width: 105%!important;
+	}
+	.radioB div {
+    	padding: 5%;
+    	width: 101%;
+	}
+	.mardukner{
+		text-align: center;
+	}
+}
+@media (min-width: 320px) and (max-width: 457px){
+	.container{
+		padding-left: 0;
+	}
+	.radioB div {
+    	padding: 5%;
+    	width: 109%;
+	}
+	.mardukner{
+		text-align: center;
+	}
+}
