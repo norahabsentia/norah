@@ -152,18 +152,27 @@
                 </div>
 
             </header>
-            <div class="row" style="padding:20px">
-                <div class="col-lg-offset-2 col-lg-8">
+            <div class="row" style="padding:5px">
+                    <div class="col-lg-offset-2 col-lg-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="SearchInput" placeholder="Search ...">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="javaScript:textSearch()" >Search</button>
+                            </span>
+                        </div>
+                        
+                    
+                        <!-- /input-group -->
+                  
+            <div class="row" style="padding:5px">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="SearchInput" placeholder="Search ...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="javaScript:textSearch()" >Search</button>
-                        </span>
+                            <div class="downZip"> <button class="btn btn-default" type="button">Download All</button></div><span class="input-group-btn">
+                    <div class="addAll">  <button class="btn btn-default" type="button">Add All to Library</button></div></span>
                     </div>
-                    <!-- /input-group -->
-                </div>
+            </div>
+        </div>
                 <!-- /.col-lg-6 -->
-
+          
             </div>
             <div class="row searchMessage" style="padding:20px;display:none">
                 <div class=" col-lg-offset-3 col-lg-6 alert alert-success">

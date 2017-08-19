@@ -216,6 +216,61 @@ function showSearchCount(count) {
     }
 
 }
+$('.downZip').click(function() {
+  //  e.preventDefault();
+    window.location.href="https://firebasestorage.googleapis.com/v0/b/norahanimation.appspot.com/o/Animation_Archive.zip?alt=media&token=ac47493e-046d-4a50-a1fb-a29648380fc1";
+});
+$('.addAll').click(function() {
+    toastr.info('Adding all animations in your library');
+    if (firebase.auth().currentUser) {
+        var counter=animationsArray.length;
+        var count=0;
+        animationsArray.forEach(function(anim) {
+           count=count+1;
+      
+    
+// Needs to be looped from animationsArray elements
+
+        var animName = anim.name;   //$(this).data("name");
+        var duration = anim.duration; //$(this).data("duration");
+        var displayName = anim.displayName; //$(this).data("displayname");
+        var userId = firebase.auth().currentUser.uid;
+
+        console.log("UID" + userId);
+        firebase.database().ref("usernames").child(userId).child("mylibrary").once("value", function(snap) {   // Needs to be called once
+            var libraryItems = snap.val();
+            var exists = false;
+            libraryItems && Object.keys(libraryItems).forEach(function(itemKey) {
+                exists = exists || (libraryItems[itemKey]['name'] == animName);
+            });
+            if (!exists) {
+                var newObjRef = firebase.database().ref("usernames").child(userId).child("mylibrary/").push();
+
+                var storageBucket = firebase.app().options.storageBucket;
+                var animMp4Name = "mp4Files/" + animName + ".mp4";
+                var mp4Url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animMp4Name)}?alt=media`;
+
+                var animFileName = "animFiles/" + animName + ".anim";
+                var animFileUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(animFileName)}?alt=media`;
+
+                newObjRef.set({
+                    displayName: displayName,
+                    name: animName,
+                    duration: duration
+                });
+            
+             } else {
+              //  toastr.error('Already in your library')
+            }
+        })
+        if(count>=counter){ toastr.info('All animations have been added to your library');}
+     });
+    }
+     else {
+        $('#myModal').modal('show');
+    }
+    
+});
 
 var SearchModule = function() {
     var keyword = ""
