@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>A Generative AI Produces a Hallucinatory Footage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <meta name="description" content="Norah AI is a revolutionary, A.I. empowered workflow for generating games. The A.I. enables quick creation and incorporation of all different game elements ranging from creation of 3D models and their animation to story
+                                    weaving and texturing.">
+    <meta name="keywords" content="norah.ai blog, norah blog" />
+    <meta name="author" content="Your name">
+    <meta name="format-detection" content="telephone=no" />
+    <!-- firebase -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="firebase/config.js"></script>
+    <script src="firebase/providers.js"></script>
+    <!-- end firebase -->
+    <!--CSS-->
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/contact-form.css">
+    <link rel="stylesheet" href="fonts/font-awesome.css">
+    <link rel="stylesheet" href="css/reg_form.css">
+    <!-- <link rel="stylesheet" href="css/rigger_popup.css"> -->
+    <!--JS-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/TMForm.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/bootstrap-filestyle.js"></script>
+
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/wow/wow.js"></script>
+    <script src="js/wow/device.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <noscript><p><img src="//piwik.norah.ai/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+</head>
+<style>
+    /* body {
+        background-color: #412A58;
+    } */
+    
+    p.para {
+        background: #412A58;
+        color: white;
+        font-size: 15px;
+        font-family: Questrial;
+        font-stretch: expanded;
+        letter-spacing: 2.5px;
+        margin-left: 15%;
+        margin-right: 15%;
+        text-align: left;
+    }
+    
+    div.spacing {
+        background: #ffffff;
+        margin-top: 54px;
+    }
+</style>
+
+<body>
+    <div class="main indent">
+        <!--header-->
+        <div class="container">
+            <header class="clearfix">
+                <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                    <ul class="nav sf-menu  clearfix ">
+
+                        <li class="sub-menu"><a href="index">Home</a><span class="fa fa-angle-down"></span>
+                            <ul class="homeSub">
+                                <!--<li><a href="#" id="body">body</a>
+                                    
+                                </li>-->
+                                <li><a href="#">Animation</a>
+                                    <ul class="bodysub">
+                                        <li><a href="auto-rigger" style="cursor:pointer;">Auto Rigger</a></li>
+                                        <li><a href="repository">Repository</a></li>
+                                        <li><a href="style-transfer-tool">Style Transfer</a></li>
+                                        <li><a href="motion-editor">Motion Editor</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">3D Modelling</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Game maker</a>
+                                    <ul class="bodysub">
+                                        <li><a href="#">Yet To Launch</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li><a href="my-library">My Library</a></li>
+                        <li class="sub-menu"><a>Learn</a><span class="fa fa-angle-down"></span>
+                            <ul class="homeSub">
+
+
+                                <li><a href="https://firebasestorage.googleapis.com/v0/b/norahanimation.appspot.com/o/Norah%20User%20Manual.pdf?alt=media&token=5f361a5a-75e4-493d-9555-9ee8af7b7c26" target="_blank" style="cursor:pointer;">User Manual</a></li>
+                                <li><a href="tutorials">Tutorials</a></li>
+                                <li><a href="blog">Blog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+
+
+                    </ul>
+                </nav>
+                <div class="follow_icon reposFollowIcon">
+                    <div class="user-mail pull-right"></div>
+                    <div class="log-Out" id="logOutBtn" type="button" class="lgbtn">Log-Out</div>
+                    <div class="sign-in">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg regB repositButton"><i class="fa fa-lock" aria-hidden="true"></i>Sign-in</button>
+                    </div>
+                </div>
+
+            </header>
+        </div>
+    </div>
+    <!--content-->
+    <div class="content">
+        <div class="container">
+    <h2>A Generative AI Produces a Hallucinatory Footage</h2>
+
+    <div class="blog-post" style="background:#ffffff;text-align:left;"><br>
+        <span class="date">August 21, 2017</span><!--</p>-->
+        <br>
+        <br> <p>Generative models are gathering a powerful momentum in the contemporary AI research. Leveraging the power of unsupervised learning and DL (Deep Learning), generative models such as Variational Auto-encoders (VAEs) and GANs (Generative Adversarial networks) create pictures, audio and video samples that look and sound more realistic with each training epoch<a href="#note1" id="note1ref"><sup>1</sup></a>. Among recent breakthroughs in the generative models, one should mention Sketch RNN, a neural net for generating sketches, Google’s DeepDream that creates surrealistic images by exciting certain neurons, and MIT Nightmare Machine that transfers horror style to images of human faces and buildings.<br /><br /></p>
+
+<h3 id="future-prediction">Future Prediction</h3>
+<p>One of the most exciting innovations in the field of generative models is a future prediction technique developed by MIT’s Computer Science and Artificial Intelligence Laboratory (CSAIL)<a href="#note2" id="note2ref"><sup>2</sup></a>. The technique allows transforming still images into brief animations (GIFs) that simulate the future of the scene. The MIT’s algorithm has been able to produce short videos that look if as the artificial brain of the neural net was hallucinating. The imagery created by CSAIL’s neural net reminds of the tripping pictures that come to people on LSD. Motion blurs, unstable backgrounds and foregrounds one can see in the CSAIL experiment are also very reminiscent of the famous Surrealistic paintings by Salvador Dali. The question arises: is this effect intentional?</p>
+
+<p><br /><br />
+<img style="margin-left: 20%;" src="/img/VAE learning to generate images (log time).gif" /><img style="margin-left: 3%;" src="/img/GAN learning to generate images (linear time).gif" />
+<br /><br /></p>
+<p style="margin-left: 23%;">VAE learning to generate images (log time)&nbsp;   &nbsp;  &nbsp;   &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;   &nbsp;GAN learning to generate images (linear time)</p>
+<p><br /><br /></p>
+
+<p>On the one hand, machine ‘hallucinations’ may be explained by the shortcomings of the CSAIL’s generative model. On the other hand, they can say much about a hidden potential of machine creativity that expands the boundaries of human imagination. Let’s delve deeper into the technical details of the network to understand how MIT CSAIL algorithms produce this interesting effect.</p>
+
+<p><br /><br /></p>
+<h3 id="architecture-of-the-csail-model">Architecture of the CSAIL Model</h3>
+<p>Carl Vondrick, Hamed Pirsiavash, and Antonio Torralba, the researchers who developed a future prediction AI, used the unsupervised learning approach in combination with Generative Adversarial Networks (GANs). The system was trained on two million of unlabeled videos that included a year’s worth of footage. As a result, the CSAIL team has managed to develop a system that can classify and generate new videos. The GAN architecture used by MIT CSAIL is an innovative approach first presented by Ian Goodfellow and his colleagues in the 2014 paper<a href="#note3" id="note3ref"><sup>3</sup></a>. In a nutshell, GANs( Generative Adversarial Networks) is a generative model that consists of two competing networks, Generative and Discriminatory. The Generative network creates model samples from input noise that represents some probability distribution over the unlabeled video samples. In its turn, the Discriminatory network acts as a policeman who tries to expose the fake samples created by the Generative network. The competition between two networks results in the gradual improvement of the Generative network’s creativity and the Discriminatory network’s policing skills. In the end of the training, samples produced by the Generative network are virtually indistinguishable from the training sample.</p>
+
+<p><br /><br /></p>
+
+<p>MIT CSAIL researchers employed a pretty similar approach. They used a low-dimensional random noise as the input of the generative network. To model videos, they also applied spatio-temporal up-convolution (2D for space, and 1D for time). For the discriminator, the researchers opted for a deep spatio-temporal convolutional network. Then, to train two networks, millions of Flickr videos were stabilized and filtered by scene category. To expand still scenes into the future, the researchers decided to model the background separately from the foreground. As a result, the setup produces a static background (replicated over time) and a moving foreground combined with the background using a mask. This technical decision explains why videos produced by the model look like hallucinations. Since foreground and background change separately, there is a slight mismatch between them.  Similarly, motion blurs make videos a little bit fluctuating and unpredictable. Therefore, in many cases, the future scene does not match the first frame. As in Dali’s paintings,  time in CSAIL’s GIFs, thus, seems discontinuous and almost visible.  Dispersed and visible time combined with  low resolution and unnatural rendering of the video samples create a tripping atmosphere which is very different from reality. 
+Nevertheless, the discussed experiment is very promising because it explores new venues in automatic video and graphics generation. Its findings may be used in the procedural generation of video game content, automatic production of stock photography, commercial designs, video clips, and many other things. Related generative models may be also efficiently used for style transfer. This technology has been already popularized in mobile applications such as Prisma, Comet, Pikazo, and BitCam that can transform images into various styles (e.g Impressionist or Cubist) expanding the way users express themselves. At the same time, it is still a long way to go from hallucinatory videos to truly realistic clips. Even though, future prediction technology has already introduced a new era of machine creativity that was hard to imagine even three years ago. <br /><br /></p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li><a href="https://blog.openai.com/generative-models/">Open AI Blog. (2016). Generative Models. Open AI</a> <a id="note1" href="#note1ref"><sup>1</sup></a></li>
+  <li><a href="http://carlvondrick.com/tinyvideo/">Vondrick, Carl, Pirsiavash, Hamed, Torralba, Antonio. (2016). Generating Videos From Scene Dynamic</a><a id="note2" href="#note2ref"><sup>2</sup></a></li>
+  <li><a href="https://arxiv.org/abs/1406.2661">Goodfellow, I. et al. (2014). Generative Adversarial Networks</a><a id="note3" href="#note3ref"><sup>3</sup></a></li>
+</ol>
+
+    </div>
+</div>
+    </div>
+    <!--footer-->
+    <footer>
+        <div class="container">
+            <figure><img src="img/fotterLogo.jpg" alt=""></figure>
+        </div>
+    </footer>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="reg">
+                <img src="img/blank_modal.png" alt="Norah.ai" class="img-logo img responsive">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="ENTER PASSWORD">
+                    </div>
+
+                    <button type="button" class="btn btn-default but1" id="loginBtn">Log-In</button>
+                    <div id="firebaseui-auth-container"></div><br><br>
+                    <p align="center" class="new-animake">Sign-up</p>
+                    <button id="logOutBtn" class="btn btn-lg btn-primary btn-block hide" type="button">Log-Out</button>
+                </div>
+                <form class="reg-form">
+                    <div class="form-group">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="ENTER EMAIL ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="ENTER PASSWORD">
+                    </div>
+                    <!-- //id="regBtn" class="btn btn-lg btn-primary btn-block" -->
+                    <button type="button" class="btn btn-default but2" type="button" id="regBtn">Create account</button>
+                    <p class="already-reg">already registered?</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/tm-scripts.js"></script>
+    <!--script src="./firebase_files/ie10-viewport-bug-workaround.js"></script-->
+
+    <script src="js/firebaseAuth.js"></script>
+    <script src="firebase/login.js"></script>
+    <script src="firebase/register.js"></script>
+    <script src="firebase/firebase-listener.js"></script>
+
+
+
+    </script>
+
+</body>
+
+</html>
