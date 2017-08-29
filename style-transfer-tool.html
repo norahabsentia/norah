@@ -318,7 +318,7 @@
                                                 <input id="animation_name" type="text" autocomplete="off" placeholder="enter name" value="Download Animation" class="in_bg" style="background:#66636f;border:0;width:100%;padding:7px 10px;border-radius:0 0 0 10px;color:#fff;outline:none;text-align:left;">
                                             </div>
                                             <div class="col-md-2" style="padding:0;margin:0;margin-left:-16px;background:#4c4756;">
-                                                <a href="javascript:downloadAnim();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.jpg') no-repeat -0px 5px;border:0px solid #fff"></span></a>
+                                                <a href="javascript:downloadAnim();piwikUpdate();"><span style="display:block;width:100%;height:35px;background:URL('img/down_plus.jpg') no-repeat -0px 5px;border:0px solid #fff"></span></a>
 
                                             </div>
 
@@ -764,6 +764,11 @@
             var txt = document.getElementById("animation_name");
             var animName = txt.value;
             gameInstance.SendMessage('ControllerHelper', 'ExportFromOutside', animName);
+        }
+        function piwikUpdate(){
+           var left_name= left_array[current_left];
+           var right_name=  right_array[current_right];
+           _paq.push(['trackEvent', 'Style-Transfer-Downloads', `${left_name} + ${right_name}`]);
         }
 
         function saveAnim() {
